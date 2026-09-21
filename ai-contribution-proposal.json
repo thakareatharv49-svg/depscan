@@ -1,0 +1,42 @@
+{
+  "summary": "Improve parse_package_lock to handle legacy npm lockfiles (v1) using dependencies instead of packages",
+  "assumptions": [
+    "Legacy npm lockfiles (v1) exist in the repository",
+    "Existing depscan-list-deps.json and depscan-output.json files"
+  ],
+  "changes": [
+    {
+      "file": "src/parsers/parsePackageLock.js",
+      "purpose": "Update parsing logic to handle legacy lockfiles correctly",
+      "before": "",
+      "after": "pseudocode:\nfunction parsePackageLock(legacyLockfile) {\n  // Handle legacy lockfile structure\n  // Parse dependencies\n  return parsedDependencies;\n}",
+      "explanation": ""
+    },
+    {
+      "file": "src/parsers/parsePackageLockLegacy.js",
+      "purpose": "Implement a new schema for legacy lockfiles",
+      "before": "",
+      "after": "pseudocode:\nfunction parsePackageLockLegacy(legacyLockfile) {\n  // Parse packages\n  return parsedPackages;\n}",
+      "explanation": ""
+    },
+    {
+      "file": "test/parsePackageLock.test.js",
+      "description": "Test the updated parsing logic with sample legacy lockfiles",
+      "code": "it('should parse legacy lockfile correctly', () => {\n  const legacyLockfile = require('./fixtures/legacy-lockfile.json');\n  const parsedDependencies = parsePackageLock(legacyLockfile);\n  expect(parsedDependencies).toEqual(expectedDependencies);\n});",
+      "explanation": ""
+    },
+    {
+      "file": "test/parsePackageLockLegacy.test.js",
+      "description": "Test the new schema for legacy lockfiles",
+      "code": "it('should parse legacy lockfile correctly', () => {\n  const legacyLockfile = require('./fixtures/legacy-lockfile.json');\n  const parsedPackages = parsePackageLockLegacy(legacyLockfile);\n  expect(parsedPackages).toEqual(expectedPackages);\n});",
+      "explanation": ""
+    }
+  ],
+  "verificationSteps": [
+    "Run the updated parsing logic with sample legacy lockfiles",
+    "Verify that the new schema for legacy lockfiles is correctly implemented"
+  ],
+  "warnings": [
+    "Potential false negatives: missing legacy lockfile support"
+  ]
+}
